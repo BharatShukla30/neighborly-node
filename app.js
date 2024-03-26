@@ -23,7 +23,7 @@ app.use(express.json());
 app.use(cookieParser());
 // app.use(cors());
 app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "http://localhost:5173");
+  res.header("Access-Control-Allow-Origin", "https://neighborly.in");
   res.header("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE");
   res.header("Access-Control-Allow-Headers", "Content-Type");
   res.header("Access-Control-Allow-Credentials", true);
@@ -31,17 +31,16 @@ app.use((req, res, next) => {
 });
 
 // Routes
-app.use("/user", userRoute);
-app.use("/group", groupRoute);
-app.use("/dummy", dummyRoute);
+app.use("/api/user", userRoute);
+app.use("/api/group", groupRoute);
+app.use("/api/dummy", dummyRoute);
 
 
 
 app.use(errorMiddleware)
 
 app.listen(PORT, '0.0.0.0', () => {
-  console.log(`Server is running on http://localhost:${PORT}`);
-  activityLogger.info(`Server is running on http://localhost:${PORT}`);
+  console.log(`Server is running on http://localhost:${PORT}/api`);
 });
 
 
